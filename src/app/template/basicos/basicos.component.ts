@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, NgModuleRef, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, NgModuleRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -9,23 +9,47 @@ import { NgForm } from '@angular/forms';
 })
 export class BasicosComponent implements OnInit {
 
+  @ViewChild('miFormulario') miFormulario!: NgForm;
+
+  initForm = {
+    producto: 'Piña',
+    precio: 10,
+    existencias: 10
+  }
+
   constructor() { }
-  // constructor(private resolver: ComponentFactoryResolver) {
-  //   const factory = resolver.resolveComponentFactory(BasicosComponent);
-  //   console.log('the factory:', factory);
-  
-  //   // Access the private ngModule property.
-  //   const ngModuleRef: NgModuleRef<any> = (factory as any).ngModule;
-  //   console.log('the module name:', ngModuleRef.instance.constructor.name)
-  // }
+
 
   ngOnInit(): void {
   }
 
-  guardar(miFormulario: NgForm){    
-    // console.log('submit hecho');
-    console.log(miFormulario.value);
+  // guardar(miFormulario: NgForm){    
+  //   // console.log('submit hecho');
+  //   console.log(miFormulario.value);
 
+  // }
+
+  nombreValido(): boolean{
+    return this.miFormulario?.controls.producto?.invalid 
+            && this.miFormulario?.controls.producto?.touched;
   }
+
+  precioValido(): boolean{
+    return this.miFormulario?.controls.precio?.invalid 
+             && this.miFormulario?.controls.precio?.touched;
+  }
+
+  guardar(){    
+    //console.log(this.miFormulario);
+
+    console.log('Registro guardado');
+    this.miFormulario.resetForm();
+    // Por si quieres poner unos valores por defecto
+    // this.miFormulario.resetForm({
+    //   precio: 0,
+    //   existencias: 0
+    // });
+  }
+
 
 }
