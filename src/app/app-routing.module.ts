@@ -5,11 +5,11 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path:'template',
-    loadChildren: () => import('./template/template-routing.module').then(m => m.TemplateRoutingModule)
+    loadChildren: () => import('./template/template.module').then(m => m.TemplateModule)
   },
   {
     path:'reactive',
-    loadChildren: () => import('./reactive/reactive-routing.module').then(m => m.ReactiveRoutingModule)
+    loadChildren: () => import('./reactive/reactive.module').then(m => m.ReactiveModule)
   },
   {
     path: '**',

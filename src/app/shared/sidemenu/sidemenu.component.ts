@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+interface MenuItem {
+  texto: string;
+  ruta: string;
+}
 
 @Component({
   selector: 'app-sidemenu',
@@ -6,11 +12,36 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class SidemenuComponent implements OnInit {
+export class SidemenuComponent {
+  
+  templateMenu: MenuItem[] = [
+    {
+      texto: 'Básicos',
+      ruta: './template/basicos'
+    },
+    {
+      texto: 'Dinámicos',
+      ruta: './template/dinamicos'
+    },
+    {
+      texto: 'Switches',
+      ruta: './template/switches'
+    }
+  ];
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  reactiveMenu: MenuItem[] = [
+    {
+      texto: 'Básicos',
+      ruta: './reactive/basicos'
+    },
+    {
+      texto: 'Dinámicos',
+      ruta: './reactive/dinamicos'
+    },
+    {
+      texto: 'Switches',
+      ruta: './reactive/switches'
+    }
+  ];
 
 }
