@@ -13,4 +13,8 @@ export class DinamicosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  coso(){
+    
+  }
+
 }
