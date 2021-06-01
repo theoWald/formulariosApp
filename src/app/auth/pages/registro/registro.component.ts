@@ -31,7 +31,9 @@ export class RegistroComponent implements OnInit {
     this.miFormulario.reset({
       nombre: 'Juan Luis',
       email: 'test1@test.com',
-      username: 'juanluar_93'
+      username: 'juanluar_93',
+      password: '123456',
+      password2: '123456'
     })
   }
 
@@ -45,5 +47,23 @@ export class RegistroComponent implements OnInit {
 
     this.miFormulario.markAllAsTouched();
   }
+
+  emailRequired(){
+    return this.miFormulario.get('email')?.errors?.required
+            && this.miFormulario.get('email')?.touched;
+  }
+
+  emailFormato(){
+    return this.miFormulario.get('email')?.errors?.pattern
+            && this.miFormulario.get('email')?.touched;
+  }
+
+  emailTomado(){
+    return this.miFormulario.get('email')?.errors?.emailTomado
+            && this.miFormulario.get('email')?.touched;
+  }
+
+
+
 
 }
